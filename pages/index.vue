@@ -1,6 +1,18 @@
 <template>
   <section class="container">
     <div>
+      <swiper :options="swiperOption">
+        <swiper-slide><img src="../static/1.jpg" ></swiper-slide>
+        <swiper-slide><img src="../static/2.jpg"></swiper-slide>
+        <swiper-slide><img src="../static/1.jpg" ></swiper-slide>
+        <swiper-slide><img src="../static/2.jpg"></swiper-slide>
+        <swiper-slide><img src="../static/1.jpg" ></swiper-slide>
+        <swiper-slide><img src="../static/2.jpg"></swiper-slide>
+        <swiper-slide><img src="../static/2.jpg"></swiper-slide>
+        <div class="swiper-button-prev" slot="button-prev"></div>
+        <div class="swiper-button-next" slot="button-next"></div>
+      </swiper>
+
       <logo/>
       <h1 class="title">
         NuxtApplication
@@ -24,10 +36,24 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+import 'swiper/dist/css/swiper.css'
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
 export default {
   components: {
-    Logo
+    Logo,
+    swiper,
+    swiperSlide
+  },
+  data() {
+    return {
+      swiperOption: {
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
+      }
+    }
   }
 }
 </script>
@@ -35,11 +61,7 @@ export default {
 <style>
 
 .container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+
 }
 
 .title {
