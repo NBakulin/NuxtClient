@@ -8,7 +8,7 @@
         <div class="swiper-button-prev" slot="button-prev"></div>
         <div class="swiper-button-next" slot="button-next"></div>
       </swiper>
-
+      <clocks/>
       <logo/>
       <h1 class="title">
         NuxtApplication
@@ -30,15 +30,17 @@
 </template>
 
 <script>
-import Logo from '../components/Logo.vue'
+import Logo from '~/components/Logo.vue'
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import clocks from '~/components/clock.vue'
 
 export default {
   components: {
     Logo,
     swiper,
-    swiperSlide
+    swiperSlide,
+    clocks
   },
   data() {
     return {
