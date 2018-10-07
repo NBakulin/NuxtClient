@@ -1,14 +1,10 @@
 <template>
-  <section class="container">
     <div>
-      <swiper :options="swiperOption">
-        <swiper-slide><img src="../static/1.jpg" ></swiper-slide>
-        <swiper-slide><img src="../static/2.jpg"></swiper-slide>
-        <swiper-slide><img src="../static/1.jpg" ></swiper-slide>
-        <swiper-slide><img src="../static/2.jpg"></swiper-slide>
-        <swiper-slide><img src="../static/1.jpg" ></swiper-slide>
-        <swiper-slide><img src="../static/2.jpg"></swiper-slide>
-        <swiper-slide><img src="../static/2.jpg"></swiper-slide>
+      <swiper :options="swiperOption"  class="swiper-style">
+        <swiper-slide><img src="../static/awesome-slider/space1.jpg"></swiper-slide>
+        <swiper-slide><img src="../static/awesome-slider/space2.png"></swiper-slide>
+        <swiper-slide><img src="../static/awesome-slider/space3.jpg"></swiper-slide>
+        <swiper-slide><img src="../static/awesome-slider/space4.jpg"></swiper-slide>
         <div class="swiper-button-prev" slot="button-prev"></div>
         <div class="swiper-button-next" slot="button-next"></div>
       </swiper>
@@ -31,11 +27,10 @@
           class="button--grey">GitHub</a>
       </div>
     </div>
-  </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Logo from '../components/Logo.vue'
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
@@ -60,10 +55,6 @@ export default {
 
 <style>
 
-.container {
-
-}
-
 .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -73,7 +64,16 @@ export default {
   color: #35495e;
   letter-spacing: 1px;
 }
+.swiper-slide img
+{
+  width:100%;
 
+}
+
+.swiper-style{
+  width: 900px;
+  align-items: center;
+}
 .subtitle {
   font-weight: 300;
   font-size: 42px;
