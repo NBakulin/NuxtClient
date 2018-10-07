@@ -1,35 +1,35 @@
 <template>
   <div id="clock">
-    <p class="date">{{ date }}</p>
-    <p class="time">{{ time }}</p>
+    <p class="date">{{ clock.date }}</p>
+    <p class="time">{{ clock.time }}</p>
     <p class="text">DIGITAL CLOCK with Vue.js</p>
   </div>
 </template>
 
 <script>
-  import Vue from 'vue'
-  var clock = new Vue({
-    el: '#clock',
-    data: {
-      time: '',
-      date: ''
+  export default {
+    name: "#clock",
+    data() {
+      return clock;
+    },
+    created() {
+      const week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+      this.updateTime(week);
+    },
+    methods: {
+      zeroPadding(num, digit) {
+        let zero = '';
+        for (let i = 0; i < digit; i++) {
+          zero += '0';
+        }
+        return (zero + num).slice(-digit);
+      },
+      updateTime(week) {
+        let currentDate = new Date();
+        clock.time = this.zeroPadding(currentDate.getHours(), 2) + ':' + this.zeroPadding(currentDate.getMinutes(), 2) + ':' + this.zeroPadding(currentDate.getSeconds(), 2);
+        clock.date = this.zeroPadding(currentDate.getFullYear(), 4) + '-' + this.zeroPadding(currentDate.getMonth() + 1, 2) + '-' + this.zeroPadding(currentDate.getDate(), 2) + ' ' + week[currentDate.getDay()];
+      }
     }
-  });
-
-  var week = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-  updateTime();
-  function updateTime() {
-    var cd = new Date();
-    clock.time = zeroPadding(cd.getHours(), 2) + ':' + zeroPadding(cd.getMinutes(), 2) + ':' + zeroPadding(cd.getSeconds(), 2);
-    clock.date = zeroPadding(cd.getFullYear(), 4) + '-' + zeroPadding(cd.getMonth()+1, 2) + '-' + zeroPadding(cd.getDate(), 2) + ' ' + week[cd.getDay()];
-  };
-
-  function zeroPadding(num, digit) {
-    var zero = '';
-    for(var i = 0; i < digit; i++) {
-      zero += '0';
-    }
-    return (zero + num).slice(-digit);
   }
 </script>
 
