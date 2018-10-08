@@ -1,8 +1,7 @@
 <template>
   <div id="clock">
     <p class="date">{{ formDt.date }}</p>
-    <p class="time">{{ formDt.time }}</p> 
-    <p class="text">DIGITAL CLOCK with Vue.js</p>
+    <p class="time">{{ formDt.time }}</p>
   </div>
 </template> 
 
@@ -19,25 +18,7 @@ export default {
       }
     }
   },
-  // clock: {
-  //   time:
-  //     this.zeroPadding(currentDate.getHours(), 2) +
-  //     ':' +
-  //     this.zeroPadding(currentDate.getMinutes(), 2) +
-  //     ':' +
-  //     this.zeroPadding(currentDate.getSeconds(), 2),
-  //   date:
-  //     this.zeroPadding(currentDate.getFullYear(), 4) +
-  //     '-' +
-  //     this.zeroPadding(currentDate.getMonth() + 1, 2) +
-  //     '-' +
-  //     this.zeroPadding(currentDate.getDate(), 2) +
-  //     ' ' +
-  //     week[currentDate.getDay()]
-  // }
-
   created() {
-    // this.updateTime(this.week)
   },
   mounted() {
     this.$options.interval = setInterval(this.updateDt, 1000)
@@ -110,10 +91,10 @@ p {
   font-family: 'Share Tech Mono', monospace;
   color: #ffffff;
   text-align: center;
-  position: absolute;
+  position: relative;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -15%);
   color: #daf6ff;
   text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
   .time {
