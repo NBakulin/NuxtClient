@@ -1,27 +1,69 @@
 <template>
   <div id="clock">
-    <p class="date">{{ clock.date }}</p>
-    <p class="time">{{ clock.time }}</p>
+    <p class="date">{{ formDt.date }}</p>
+    <p class="time">{{ formDt.time }}</p> 
     <p class="text">DIGITAL CLOCK with Vue.js</p>
   </div>
-</template>
+</template> 
 
 <script>
 export default {
   name: 'clock',
   data() {
     return {
-      clock: {
-        date: '',
-        time: ''
-      },
-      week: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+      week: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
+      datetime: new Date(),
+      formDt: {
+        time: '',
+        date: ''
+      }
     }
   },
+  // clock: {
+  //   time:
+  //     this.zeroPadding(currentDate.getHours(), 2) +
+  //     ':' +
+  //     this.zeroPadding(currentDate.getMinutes(), 2) +
+  //     ':' +
+  //     this.zeroPadding(currentDate.getSeconds(), 2),
+  //   date:
+  //     this.zeroPadding(currentDate.getFullYear(), 4) +
+  //     '-' +
+  //     this.zeroPadding(currentDate.getMonth() + 1, 2) +
+  //     '-' +
+  //     this.zeroPadding(currentDate.getDate(), 2) +
+  //     ' ' +
+  //     week[currentDate.getDay()]
+  // }
+
   created() {
-    this.updateTime(this.week)
+    // this.updateTime(this.week)
+  },
+  mounted() {
+    this.$options.interval = setInterval(this.updateDt, 1000)
+  },
+  beforeDestroy() {
+    clearInterval(this.$options.interval)
   },
   methods: {
+    updateDt: function() {
+      let dat = new Date()
+      let hours = dat.getHours()
+      let mins = dat.getMinutes()
+      let sec = dat.getSeconds()
+      let day = this.week[dat.getDay()]
+      this.formDt.date =
+        dat.getFullYear() +
+        '-' +
+        dat.getMonth() +
+        '-' +
+        dat.getDay() +
+        ' ' +
+        day
+      this.formDt.time = hours + ':' + mins + ':' + sec
+      console.log(this.formDt.date)
+      console.log(this.formDt.time)
+    },
     zeroPadding(num, digit) {
       let zero = ''
       for (let i = 0; i < digit; i++) {
