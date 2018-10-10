@@ -19,6 +19,15 @@
           class="swiper-button-next"/>
       </swiper>
     </div>
+    <div>
+      <textarea 
+        rows="4" 
+        cols="50"
+        class="textArea"
+        disabled>
+        Cosmos is great, really!
+      </textarea>
+    </div>
   </div>
 </template>
 
@@ -50,7 +59,8 @@ export default {
 
 <style>
 body {
-  background-color: black;
+  background: radial-gradient(ellipse at center, #0a2e38 0%, #000000 70%);
+  background-size: 100%;
 }
 .swiper-div {
   text-align: center;
@@ -88,6 +98,23 @@ body {
   color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
+}
+
+.textArea {
+  transform: translate(0, 10%);
+  dismin-height: 100%;
+  min-width: 100%;
+  border: transparent;
+  font-family: 'Share Tech Mono', monospace;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  font-size: 22px;
+  color: #daf6ff;
+  text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+  background: #0f3854;
+  background: radial-gradient(ellipse at center, #0a2e38 0%, #000000 70%);
+  background-size: 100%;
 }
 
 .links {
