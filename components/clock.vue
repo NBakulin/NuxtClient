@@ -1,15 +1,21 @@
 <template>
-  <div id="clock">
-    <p class="date">{{ formDt.date }}</p>
+  <div 
+    id="clock" 
+    @click="showOrHideSelector('#dateId', counter++)">
+    <p 
+      id="dateId" 
+      class="date">{{ formDt.date }}</p>
     <p class="time">{{ formDt.time }}</p>
   </div>
 </template> 
 
 <script>
+import $ from 'jquery'
 export default {
   name: 'Clock',
   data() {
     return {
+      counter: 0,
       week: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
       datetime: new Date(),
       formDt: {
@@ -26,6 +32,15 @@ export default {
     clearInterval(this.$options.interval)
   },
   methods: {
+    showOrHideSelector(selector, counter) {
+      debugger
+      if (counter % 2 === 0) {
+        $(selector).hide()
+      } else {
+        $(selector).show()
+      }
+    },
+    showSelector(selector, counter) {},
     updateDt: function() {
       let dat = new Date()
       let hours = dat.getHours()
